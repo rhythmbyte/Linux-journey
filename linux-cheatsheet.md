@@ -84,6 +84,17 @@ NAME=value           Set a variable (no spaces around =)
 $NAME                Use a variable
 $(command)           Command substitution (run cmd, use its output)
 chmod +x script.sh   Make runnable, then: ./script.sh
+' '                  Literal: prints exactly what's inside ($name stays $name)
+" "                  Expands variables ($name -> its value)
+${name}              Braces mark where the name ends: ${name}s -> Ghosts
+$1 $2 ...            1st, 2nd argument typed after the script name
+$#                   Number of arguments given
+unset variable       Silently empty, no error (typo trap)
+if [ -z "$1" ]; then ... fi   If $1 is empty (-z = zero length); fi closes it
+exit N               Stop script NOW, report code N
+$?                   Last command's exit code (echo $? to see; resets every command)
+Exit codes           0 success | 1 general fail | 126 not executable | 127 not found | 130 Ctrl+C
+./script.sh          Run from current folder (it's not in PATH)
 
 ## Shell Customization (~/.bashrc)
 source ~/.bashrc     Reload config after editing
