@@ -77,6 +77,14 @@ Esc                  Back to Normal mode
 dd                   Delete (cut) a line
 u                    Undo ;  Ctrl+r  Redo
 G                    Bottom of file ;  gg  Top
+h j k l              Left, down, up, right (j hangs down)
+6j                   Number first = repeat (6 lines down)
+/word                Search; n next match, N previous
+V                    Select whole lines (visual line mode)
+y                    Yank (copy)
+p                    Paste below cursor
+gg V G y             Copy entire file to clipboard
+nvim --clean <file>  No config/plugins (practice for bare vim on targets)
 
 ## Scripting
 #!/bin/bash          Shebang (first line; names interpreter)
@@ -146,6 +154,13 @@ gh auth login        Log machine into GitHub
 gh auth status       Check GitHub login
 gh repo create <name> --private --source=. --push
 .env = secrets, never commit, keep in .gitignore
+? (prompt)           Untracked: new file git has never tracked
+modified / ● icon    Tracked file changed since last commit
+git diff             Show changes: + added lines, - removed (whole repo)
+git add .            Stage new + changed files in THIS folder and below only
+git commit           (no -m) Opens editor: message on line 1, :wq; empty = cancel
+git show <commit>    See exactly what a commit changed
+Commit messages      Verb + what: "Add X to Y" (finishes "This commit will...")
 
 ## Git Workflow Rhythm (one task = one branch)
 1. git checkout main
