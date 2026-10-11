@@ -103,6 +103,18 @@ exit N               Stop script NOW, report code N
 $?                   Last command's exit code (echo $? to see; resets every command)
 Exit codes           0 success | 1 general fail | 126 not executable | 127 not found | 130 Ctrl+C
 ./script.sh          Run from current folder (it's not in PATH)
+for x in a b c; do ... done   Fill x with each item in turn; body runs once per item
+"$@"                 All command-line arguments, as a list (for x in "$@")
+"$1"/*.sh            Wildcard: every .sh in that folder (expanded, sorted, before loop runs)
+  no match           Pattern stays literal text -> guard with: [ ! -e "$x" ] && continue
+continue             Skip rest of THIS pass, go to next item (loops only)
+elif [ ... ]; then   Next test in the chain (nested IF)
+else                 Catch-all: runs if nothing above matched
+[ "$a" = "b" ]       Compare strings (spaces required; no spaces = assignment)
+!                    NOT: flips a test ([ ! -d "$1" ] = not a directory)
+-e -f -d             Exists / is a file / is a directory
+-r -w -x             Readable / writable / executable by you
+fi before done       Close inner if before closing the loop
 
 ## Shell Customization (~/.bashrc)
 source ~/.bashrc     Reload config after editing
